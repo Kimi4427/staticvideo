@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta name="google-site-verification" content="OTvQGWQG91C6LnPDOrh6YyTElASuNeUAQxyBody04Ag" />
+    <meta charset="UTF-8" />
+    <title>AAirCrafter</title>
+    <link rel="icon" type="image/x-icon" href="/images/AAirCrafter.ico" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        background-image: url("/images/basalt.png");
+        background-size: cover;
+        background-repeat: repeat-y;
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      body.lightmode {
+        background-image: url("/images/pale.png");
+        color: black;
+      }
+
+      .main-button {
+        border: none;
+        outline: none;
+        background-color: #3a3a3a;
+        width: 360px;
+        height: 120px;
+        font-size: 36px;
+        color: #fff;
+        font-weight: 800;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s;
+      }
+
+      .main-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        width: 106%;
+        height: 120%;
+        z-index: -1;
+        border-radius: inherit;
+        transition: all 0.3s;
+      }
+
+      .gradient-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 106%;
+        height: 115%;
+        overflow: hidden;
+        border-radius: inherit;
+        z-index: -2;
+        filter: blur(10px);
+        transition: all 0.3s;
+      }
+
+      .gradient {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 110%;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        background-image: linear-gradient(
+          90deg,
+          hsl(226, 81%, 64%),
+          hsl(271, 81%, 64%),
+          hsl(316, 81%, 64%),
+          hsl(1, 81%, 64%),
+          hsl(46, 81%, 64%),
+          hsl(91, 81%, 64%),
+          hsl(136, 81%, 64%),
+          hsl(181, 81%, 64%)
+        );
+        animation: rotate 2s linear infinite;
+        filter: blur(10px);
+      }
+
+      .label {
+        width: 312px;
+        height: 90px;
+        text-align: center;
+        line-height: 90px;
+        border-radius: 44px;
+        background-color: rgba(43, 43, 43, 1);
+        background-image: linear-gradient(
+          180deg,
+          rgb(43, 43, 43) 0%,
+          rgb(68, 68, 68) 100%
+        );
+		user-select: none;
+      }
+
+      .main-button:hover .gradient-container {
+        transform: translate(-50%, -50%) scale(0.98);
+        filter: blur(5px);
+      }
+
+      .main-button:hover .gradient {
+        filter: blur(5px);
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      .theme-toggle {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .toggle-checkbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .toggle-slot {
+        font-size: 10px;
+        position: relative;
+        height: 3.5em;
+        width: 7em;
+        border-radius: 10em;
+        background-color: #374151;
+        transition: background-color 250ms;
+      }
+
+      .toggle-checkbox:checked ~ .toggle-slot {
+        background-color: white;
+      }
+
+      .toggle-button {
+        transform: translate(0.3em, 0.25em);
+        position: absolute;
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+        background-color: #485367;
+        box-shadow: inset 0px 0px 0px 0.75em white;
+        transition: background-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+      }
+
+      .toggle-checkbox:checked ~ .toggle-slot .toggle-button {
+        background-color: #ffeccf;  
+        box-shadow: inset 0px 0px 0px 0.75em #ffbb52;
+        transform: translate(3.65em, 0.25em);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-button">
+      <div class="gradient-container">
+        <div class="gradient"></div>
+      </div>
+      <div class="label" id="aaircrafterbtn">AAirCrafter</div>
+    </div>
+
+    <div class="theme-toggle">
+      <label>
+        <input class="toggle-checkbox" type="checkbox" id="themeSwitch" />
+        <div class="toggle-slot">
+          <div class="toggle-button"></div>
+        </div>
+      </label>
+    </div>
+
+    <script>
+      const themeSwitch = document.getElementById("themeSwitch");
+      const body = document.body;
+
+      themeSwitch.addEventListener("change", () => {
+        body.classList.toggle("lightmode");
+      });
+
+
+      const button = document.getElementById("aaircrafterbtn");
+
+button.addEventListener("click", (event) => {
+  location.href = "./seite2.html";
+});
+
+    </script>
+  </body>
+</html>
